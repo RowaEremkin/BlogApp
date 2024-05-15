@@ -1,0 +1,80 @@
+
+
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace Rowa.Blog.Tools.Factory
+{
+    public class Factory<MN,FD> : IFactory<MN,FD> where MN : MonoBehaviour
+    {
+        protected readonly MN _prefab;
+		protected readonly Transform _container;
+        protected List<MN> _list;
+        protected Dictionary<MN, FD> _dictinary;
+        public List<MN> List => _list;
+        public Dictionary<MN, FD> Dictinary => _dictinary;
+        public Factory(MN prefab, Transform container)
+        {
+            _prefab = prefab;
+            _container = container;
+        }
+        public virtual List<MN> Add(List<FD> data, bool descent = false)
+        {
+            for (int i = descent ? data.Count - 1 : 0; (descent ? i >= 0 : i < data.Count); i += descent ? -1 : 1)
+            {
+                MN newMn = Add(data[i]);
+                _list.Add(newMn);
+                _dictinary.Add(newMn, data[i]);
+
+            }
+            return _list;
+        }
+        public virtual List<MN> Create(List<FD> data, bool descent = false)
+        {
+            Clear();
+            _list = new List<MN>();
+            _dictinary = new Dictionary<MN, FD>();
+            for (int i = descent?data.Count-1:0; (descent? i>=0 : i < data.Count); i+=descent?-1:1)
+            {
+                MN newMn = Add(data[i]);
+                _list.Add(newMn);
+                _dictinary.Add(newMn, data[i]);
+
+            }
+            return _list;
+        }
+        public virtual void Clear()
+        {
+            if (_list == null) return;
+            for (int i = _list.Count - 1; i >= 0; i--)
+            {
+                if(_list[i] != null)
+                {
+                    GameObject.Destroy(_list[i].gameObject);
+                }
+                _list.RemoveAt(i);
+            }
+        }
+        public virtual MN Add(FD data)
+        {
+            MN newMN = GameObject.Instantiate(_prefab, _container);
+            if (newMN)
+            {
+                SetData(newMN, data);
+			}
+            return newMN;
+        }
+        public virtual void SetData(MN view, FD data)
+        {
+
+        }
+        public virtual FD GetData(MN view)
+        {
+            if (_dictinary.ContainsKey(view))
+            {
+                return _dictinary[view];
+            }
+            return default(FD);
+        }
+    }
+}
