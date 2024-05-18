@@ -12,6 +12,8 @@ namespace RowaBlog.UserInterface.WindowBlogs
         private BlogDateElementView _datePrefab;
         public event Action<int> OnBlogClicked;
         public event Action<int> OnBlogLikeClicked;
+        public event Action<int> OnBlogDeleteClicked;
+        public event Action<int> OnBlogEditClicked;
         public BlogElementFactory(BlogElementView prefab, Transform container, BlogDateElementView blogDatePrefab) : base(prefab, container)
         {
             _datePrefab = blogDatePrefab;
@@ -51,6 +53,14 @@ namespace RowaBlog.UserInterface.WindowBlogs
             view.OnButtonLike += () =>
             {
                 OnBlogLikeClicked?.Invoke(data.BlogId);
+            };
+            view.OnButtonDelete += () =>
+            {
+                OnBlogDeleteClicked?.Invoke(data.BlogId);
+            };
+            view.OnButtonEdit += () =>
+            {
+                OnBlogEditClicked?.Invoke(data.BlogId);
             };
         }
         private void UpdateDates()

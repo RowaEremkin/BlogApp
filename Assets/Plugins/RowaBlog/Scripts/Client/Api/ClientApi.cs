@@ -63,6 +63,23 @@ namespace Rowa.Blog.Client.Api
                 token: _token,
                 onComplete: onComplete));
         }
+        public virtual void PutBlogEdit(PutBlogEditData putBlogEditData, Action<HttpStatusCode> onComplete = null)
+        {
+            string json = JsonUtility.ToJson(putBlogEditData);
+            StartEnumerator(Request.Put(
+                url: GetFullUrl(PutBlogEditPath, _deviceId),
+                json: json,
+                token: _token,
+                onComplete: onComplete));
+        }
+        public virtual void DeleteBlog(DeleteBlogData deleteBlogData, Action<HttpStatusCode> onComplete = null)
+        {
+            string json = JsonUtility.ToJson(deleteBlogData);
+            StartEnumerator(Request.Delete(
+                url: GetFullUrl(DeleteBlogPath, _deviceId, value: deleteBlogData.BlogId.ToString()),
+                token: _token,
+                onComplete: onComplete));
+        }
         public virtual void PutBlogLike(PutBlogLikeData putBlogLikeData, Action<HttpStatusCode> onComplete = null)
         {
             string json = JsonUtility.ToJson(putBlogLikeData);

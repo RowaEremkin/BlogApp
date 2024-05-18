@@ -30,6 +30,7 @@ namespace Rowa.Blog.Client.Api
         private const string PutPlayerLoginPath = ApiPath + PlayerPath + "Login/#";
         private const string PutPlayerRegisterPath = ApiPath + PlayerPath + "Register/#";
         private const string PutBlogLikePath = ApiPath + BlogPath + "Like/#";
+        private const string PutBlogEditPath = ApiPath + BlogPath + "Edit/#";
 
         #endregion
 
@@ -42,6 +43,7 @@ namespace Rowa.Blog.Client.Api
         #region Delete
 
         private const string DeletePlayerLogoutPath = ApiPath + PlayerPath + "Logout/#";
+        private const string DeleteBlogPath = ApiPath + BlogPath + "Delete/#/*";
 
         #endregion
 

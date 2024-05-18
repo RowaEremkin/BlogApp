@@ -9,23 +9,37 @@ namespace RowaBlog.UserInterface.WindowBlogs
 {
     public class BlogElementView : MonoBehaviour, IBlogElementView
     {
+        #region Fields
         [SerializeField] private TextMeshProUGUI _textTitle;
         [SerializeField] private TextMeshProUGUI _textDescription;
         [SerializeField] private TextMeshProUGUI _textDateTime;
         [SerializeField] private TextMeshProUGUI _textLikes;
         [SerializeField] private Image _imageLiked;
         [SerializeField] private Image _imageBackground;
+        [SerializeField] private Image _imageEditBackground;
         [SerializeField] private RectTransform _rectTransform;
         [SerializeField] private Button _buttonEnter;
         [SerializeField] private Button _buttonLike;
+        [SerializeField] private Button _buttonDelete;
+        [SerializeField] private Button _buttonEdit;
         [SerializeField] private float _minSizeX = 200f;
+        #endregion
+        #region Events
         public event Action OnButtonEnter;
         public event Action OnButtonLike;
+        public event Action OnButtonDelete;
+        public event Action OnButtonEdit;
+        #endregion
+        #region Unity
         private void Awake()
         {
             if(_buttonEnter) _buttonEnter.onClick.AddListener(Enter);
             if (_buttonLike) _buttonLike.onClick.AddListener(Like);
+            if (_buttonDelete) _buttonDelete.onClick.AddListener(Delete);
+            if (_buttonEdit) _buttonEdit.onClick.AddListener(Edit);
         }
+        #endregion
+        #region Public Methods
         public void SetData(BlogElementViewData blogElementViewData, bool updateRect = true)
         {
             gameObject.name = $"BlogElement ({blogElementViewData.BlogId})";
@@ -43,8 +57,16 @@ namespace RowaBlog.UserInterface.WindowBlogs
             if (_textDateTime) _textDateTime.text = blogElementViewData.DateTime.ToShortTimeString();
             if (_textLikes) _textLikes.text = blogElementViewData.Likes.ToString();
             if (_imageLiked) _imageLiked.gameObject.SetActive(blogElementViewData.Liked);
+            if (_buttonDelete) _buttonDelete.gameObject.SetActive(blogElementViewData.MyBlog);
+            if (_buttonEdit) _buttonEdit.gameObject.SetActive(blogElementViewData.MyBlog);
             if (updateRect) StartCoroutine(Delay(blogElementViewData.MyBlog));
         }
+        public void SetEditMode(bool active)
+        {
+            _imageEditBackground.gameObject.SetActive(active);
+        }
+        #endregion
+        #region Private
         private void Enter()
         {
             OnButtonEnter?.Invoke();
@@ -53,6 +75,15 @@ namespace RowaBlog.UserInterface.WindowBlogs
         {
             OnButtonLike?.Invoke();
         }
+        private void Delete()
+        {
+            OnButtonDelete?.Invoke();
+        }
+        private void Edit()
+        {
+            OnButtonEdit?.Invoke();
+        }
+        private static bool DelayDebug = false;
         private IEnumerator Delay(bool myBlog)
         {
             yield return new WaitForEndOfFrame();
@@ -63,7 +94,7 @@ namespace RowaBlog.UserInterface.WindowBlogs
                     Mathf.Abs(_textDescription.rectTransform.offsetMin.x) + Mathf.Abs(_textDescription.rectTransform.offsetMax.x) + 20,
                     Mathf.Abs(_textDescription.rectTransform.sizeDelta.y) + 30
                     );
-                Debug.Log($"GO: {gameObject.name} _textDescription.textBounds.size: {_textDescription.textBounds.size} addSize: {addSize}");
+                if(DelayDebug) Debug.Log($"GO: {gameObject.name} _textDescription.textBounds.size: {_textDescription.textBounds.size} addSize: {addSize}");
                 if (_textDescription.textBounds.size.x + addSize.x > minSize.x)
                 {
                     minSize.x = _textDescription.textBounds.size.x + addSize.x;
@@ -79,7 +110,7 @@ namespace RowaBlog.UserInterface.WindowBlogs
                     Mathf.Abs(_textTitle.rectTransform.offsetMin.x) + Mathf.Abs(_textTitle.rectTransform.offsetMax.x) + 20,
                     Mathf.Abs(_textTitle.rectTransform.sizeDelta.y) + 30
                     );
-                Debug.Log($"GO: {gameObject.name} _textTitle.textBounds.size: {_textTitle.textBounds.size}");
+                if (DelayDebug) Debug.Log($"GO: {gameObject.name} _textTitle.textBounds.size: {_textTitle.textBounds.size}");
                 if (_textTitle.textBounds.size.x + addSize.x > minSize.x)
                 {
                     minSize.x = _textTitle.textBounds.size.x + addSize.x;
@@ -97,7 +128,7 @@ namespace RowaBlog.UserInterface.WindowBlogs
                 _imageBackground.rectTransform.GetLocalCorners(corners);
                 Vector2 sizeDelta = new Vector2(corners[3].x - corners[0].x, corners[2].y - corners[0].y);
 
-                Debug.Log($"GO: {gameObject.name} SizeDelta: {sizeDelta} minSize: {minSize}");
+                if (DelayDebug) Debug.Log($"GO: {gameObject.name} SizeDelta: {sizeDelta} minSize: {minSize}");
                 float needX = Mathf.Max(sizeDelta.x - minSize.x, 0);
                 if (myBlog)
                 {
@@ -115,5 +146,6 @@ namespace RowaBlog.UserInterface.WindowBlogs
                 }
             }
         }
+        #endregion
     }
 }

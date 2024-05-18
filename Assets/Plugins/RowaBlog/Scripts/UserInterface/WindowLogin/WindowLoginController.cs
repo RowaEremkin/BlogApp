@@ -9,11 +9,14 @@ namespace Rowa.Blog.UserInterface.WindowLogin
 {
 	public class WindowLoginController : IWindowLoginController, IDisposable
 	{
-		private readonly IWindowLoginView _windowLoginView;
+        #region Fields
+        private readonly IWindowLoginView _windowLoginView;
 		private readonly IWindowMessageController _windowMessageController;
         private readonly IAuthController _authController;
         private readonly IStorage _storage;
         private readonly IPanelController _panelController;
+        #endregion
+        #region Init\Dispose
         public WindowLoginController(
 			IWindowLoginView windowLoginView, 
 			IWindowMessageController windowMessageController,
@@ -42,13 +45,13 @@ namespace Rowa.Blog.UserInterface.WindowLogin
             });
 
         }
-
         public void Dispose()
 		{
 			_windowLoginView.OnLoginClicked -= Login;
             _windowLoginView.OnRegisterClicked -= Register;
         }
-
+        #endregion
+        #region Login\Register
         private void Login()
 		{
 			_authController.Login(_windowLoginView.Login, _windowLoginView.Password, OnLoginComplete);
@@ -57,6 +60,8 @@ namespace Rowa.Blog.UserInterface.WindowLogin
         {
             _authController.Register(_windowLoginView.Login, _windowLoginView.Password, OnLoginComplete);
         }
+        #endregion
+        #region OnComplete
         private void OnLoginComplete(EAuthStatus authStatus)
         {
 			switch (authStatus)
@@ -76,5 +81,6 @@ namespace Rowa.Blog.UserInterface.WindowLogin
                     break;
 			}
         }
-	}
+        #endregion
+    }
 }

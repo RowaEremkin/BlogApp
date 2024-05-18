@@ -7,6 +7,7 @@ using Rowa.Blog.UserInterface.Panels;
 using Rowa.Blog.UserInterface.WindowLogin;
 using Rowa.Blog.UserInterface.WindowMessage;
 using Rowa.Blog.UserInterface.WindowRooms;
+using RowaBlog.Tools.Coroutine;
 using RowaBlog.UserInterface.WindowBlogs;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,7 @@ namespace Rowa.Blog.UserInterface
 {
 	public class UserInterfaceRoot : MonoBehaviour
     {
+        [SerializeField] private CoroutineService _coroutineService;
         [SerializeField] private ClientApi _clientApi;
         [SerializeField] private WindowLoginView _windowLoginView;
         [SerializeField] private WindowRoomsView _windowRoomsView;
@@ -45,7 +47,7 @@ namespace Rowa.Blog.UserInterface
             _authController = new AuthController(_hasher, _clientApi, _storage);
             _windowMessageController = new WindowMessageController(_windowMessageView);
             _windowLoginController = new WindowLoginController(_windowLoginView, _windowMessageController, _authController, _storage, _panelController);
-            _windowBlogsController = new WindowBlogsController(_windowBlogsView, _panelController, _authController, _clientApi);
+            _windowBlogsController = new WindowBlogsController(_windowBlogsView, _panelController, _authController, _clientApi, _coroutineService);
             _windowRoomsController = new WindowRoomsController(_windowRoomsView, _panelController, _authController, _clientApi, _windowBlogsController);
             _deviceIdLoader = new DeviceIdLoader(_clientApi, _storage);
             _panelController.Show(EPanel.Login);

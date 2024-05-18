@@ -1,5 +1,6 @@
 
 
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,6 +14,7 @@ namespace Rowa.Blog.Tools.Factory
         protected Dictionary<MN, FD> _dictinary;
         public List<MN> List => _list;
         public Dictionary<MN, FD> Dictinary => _dictinary;
+        public event Action OnListChanged;
         public Factory(MN prefab, Transform container)
         {
             _prefab = prefab;
@@ -22,28 +24,29 @@ namespace Rowa.Blog.Tools.Factory
         {
             for (int i = descent ? data.Count - 1 : 0; (descent ? i >= 0 : i < data.Count); i += descent ? -1 : 1)
             {
-                MN newMn = Add(data[i]);
+                MN newMn = Add(data[i], invokeEvent: false);
                 _list.Add(newMn);
                 _dictinary.Add(newMn, data[i]);
-
             }
+            OnListChanged?.Invoke();
             return _list;
         }
         public virtual List<MN> Create(List<FD> data, bool descent = false)
         {
-            Clear();
+            Clear(invokeEvent: false);
             _list = new List<MN>();
             _dictinary = new Dictionary<MN, FD>();
             for (int i = descent?data.Count-1:0; (descent? i>=0 : i < data.Count); i+=descent?-1:1)
             {
-                MN newMn = Add(data[i]);
+                MN newMn = Add(data[i], invokeEvent: false);
                 _list.Add(newMn);
                 _dictinary.Add(newMn, data[i]);
 
             }
+            OnListChanged?.Invoke();
             return _list;
         }
-        public virtual void Clear()
+        public virtual void Clear(bool invokeEvent = true)
         {
             if (_list == null) return;
             for (int i = _list.Count - 1; i >= 0; i--)
@@ -54,14 +57,16 @@ namespace Rowa.Blog.Tools.Factory
                 }
                 _list.RemoveAt(i);
             }
+            if (invokeEvent) OnListChanged?.Invoke();
         }
-        public virtual MN Add(FD data)
+        public virtual MN Add(FD data, bool invokeEvent = true)
         {
             MN newMN = GameObject.Instantiate(_prefab, _container);
             if (newMN)
             {
                 SetData(newMN, data);
-			}
+            }
+            if (invokeEvent) OnListChanged?.Invoke();
             return newMN;
         }
         public virtual void SetData(MN view, FD data)

@@ -19,6 +19,8 @@ namespace Rowa.Blog.Client.Api
         public void PutPlayerLogin(PutPlayerLoginData data, Action<HttpStatusCode, string> onComplete = null);
         public void PutPlayerRegister(PutPlayerRegisterData data, Action<HttpStatusCode, string> onComplete = null);
         public void PutBlogLike(PutBlogLikeData putBlogLikeData, Action<HttpStatusCode> onComplete = null);
+        public void PutBlogEdit(PutBlogEditData putBlogEditData, Action<HttpStatusCode> onComplete = null);
+        public void DeleteBlog(DeleteBlogData deleteBlogData, Action<HttpStatusCode> onComplete = null);
         public void DeletePlayerLogout(Action<HttpStatusCode> onComplete = null);
         public void PingApi(Action<bool> onComplete);
     }

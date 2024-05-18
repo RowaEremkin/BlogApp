@@ -1,6 +1,5 @@
 using System;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -58,6 +57,7 @@ namespace Rowa.Blog.UserInterface.WindowLogin
         private void SetPasswordShowInternal(bool passwordShow)
         {
             _inputPassword.contentType = passwordShow ? TMP_InputField.ContentType.Standard : TMP_InputField.ContentType.Password;
+            _inputPassword.ForceLabelUpdate();
         }
         #endregion
         #region Public Methods
