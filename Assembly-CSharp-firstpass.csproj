@@ -64,21 +64,30 @@
     <Compile Include="Assets\Plugins\RowaBlog\Scripts\UserInterface\WindowBlogs\BlogElementViewData.cs" />
     <Compile Include="Assets\Plugins\RowaBlog\Scripts\Tools\Factory\Factory.cs" />
     <Compile Include="Assets\Plugins\RowaBlog\Scripts\UserInterface\WindowRooms\RoomElementView.cs" />
+    <Compile Include="Assets\Plugins\RowaCurveDetection\Scripts\CurveDetection\Methods\CurveDetectionMethofFrechet.cs" />
     <Compile Include="Assets\Plugins\RowaBlog\Scripts\UserInterface\WindowLogin\IWindowLoginController.cs" />
+    <Compile Include="Assets\Plugins\RowaCurveDetection\Scripts\CurveDetection\Data\CurveData.cs" />
     <Compile Include="Assets\Plugins\RowaBlog\Scripts\UserInterface\WindowBlogs\WindowBlogsController.cs" />
     <Compile Include="Assets\Plugins\RowaBlog\Scripts\UserInterface\WindowBlogs\BlogElementView.cs" />
     <Compile Include="Assets\Plugins\RowaBlog\Scripts\UserInterface\WindowLogin\WindowLoginView.cs" />
     <Compile Include="Assets\Plugins\RowaBlog\Scripts\Tools\Hasher\Hasher.cs" />
+    <Compile Include="Assets\Plugins\RowaCurveDetection\Scripts\CurveDetection\CurveDetectionController.cs" />
     <Compile Include="Assets\Plugins\RowaBlog\Scripts\Client\Device\DeviceIdLoader.cs" />
     <Compile Include="Assets\Plugins\RowaBlog\Scripts\Client\Auth\IAuthController.cs" />
     <Compile Include="Assets\Plugins\RowaBlog\Scripts\Client\Api\Data\GetBlogsData.cs" />
+    <Compile Include="Assets\Plugins\RowaCurveDetection\Scripts\CurveDetection\ICurveDetectionController.cs" />
+    <Compile Include="Assets\Plugins\RowaCurveDetection\Scripts\CurveDetection\ICurveSampleStorage.cs" />
     <Compile Include="Assets\Plugins\RowaBlog\Scripts\Client\Api\Data\PostPlayerCreateData.cs" />
     <Compile Include="Assets\Plugins\RowaBlog\Scripts\Client\Api\Data\DeletePlayerLogout.cs" />
+    <Compile Include="Assets\Plugins\RowaCurveDetection\Scripts\CurveDetection\Data\CurveSampleData.cs" />
+    <Compile Include="Assets\Plugins\RowaCurveDetection\Scripts\CurveDetection\Methods\CurveDetectionMethodVectors.cs" />
     <Compile Include="Assets\Plugins\RowaBlog\Scripts\UserInterface\WindowMessage\IWindowMessageController.cs" />
     <Compile Include="Assets\Plugins\RowaBlog\Scripts\Client\Auth\EAuthStatus.cs" />
     <Compile Include="Assets\Plugins\RowaBlog\Scripts\Client\Storage\StorageJsonElement.cs" />
     <Compile Include="Assets\Plugins\RowaBlog\Scripts\UserInterface\WindowLogin\WindowLoginController.cs" />
+    <Compile Include="Assets\Plugins\RowaCurveDetection\Scripts\CurveDetection\CurveSampleStorage.cs" />
     <Compile Include="Assets\Plugins\RowaBlog\Scripts\Client\Storage\StorageJson.cs" />
+    <Compile Include="Assets\Plugins\RowaCurveDetection\Scripts\CurveDetection\Data\CurveDetectionResultData.cs" />
     <Compile Include="Assets\Plugins\RowaBlog\Scripts\UserInterface\WindowRooms\RoomElementFactory.cs" />
     <Compile Include="Assets\Plugins\RowaBlog\Scripts\Client\Storage\EStorageKey.cs" />
     <Compile Include="Assets\Plugins\RowaBlog\Scripts\Client\Device\IDeviceIdLoader.cs" />
@@ -88,6 +97,8 @@
     <Compile Include="Assets\Plugins\RowaBlog\Scripts\UserInterface\WindowRooms\WindowRoomsController.cs" />
     <Compile Include="Assets\Plugins\RowaBlog\Scripts\UserInterface\IShowHide.cs" />
     <Compile Include="Assets\Plugins\RowaBlog\Scripts\Client\Api\IClientApi.cs" />
+    <Compile Include="Assets\Plugins\RowaCurveDetection\Scripts\PaintCurve\IPaintCurveView.cs" />
+    <Compile Include="Assets\Plugins\RowaCurveDetection\Scripts\PaintCurve\Data\PaintCurveInfoViewData.cs" />
     <Compile Include="Assets\Plugins\RowaBlog\Scripts\UserInterface\Panels\IPanelController.cs" />
     <Compile Include="Assets\Plugins\RowaBlog\Scripts\UserInterface\Panels\PanelView.cs" />
     <Compile Include="Assets\Plugins\RowaBlog\Scripts\UserInterface\WindowRooms\IWindowRoomsView.cs" />
@@ -98,38 +109,51 @@
     <Compile Include="Assets\Plugins\RowaBlog\Scripts\UserInterface\WindowRooms\IRoomElementView.cs" />
     <Compile Include="Assets\Plugins\RowaBlog\Scripts\UserInterface\WindowRooms\RoomElementViewData.cs" />
     <Compile Include="Assets\Plugins\RowaBlog\Scripts\Client\Api\Data\PutPlayerRegisterData.cs" />
+    <Compile Include="Assets\Plugins\RowaCurveDetection\Scripts\PaintCurve\PaintCurvePresenter.cs" />
     <Compile Include="Assets\Plugins\RowaBlog\Scripts\UserInterface\WindowBlogs\BlogDateElementView.cs" />
     <Compile Include="Assets\Plugins\RowaBlog\Scripts\Client\Storage\StorageJsonList.cs" />
     <Compile Include="Assets\Plugins\RowaBlog\Scripts\UserInterface\WindowBlogs\IWindowBlogsView.cs" />
     <Compile Include="Assets\Plugins\RowaBlog\Scripts\UserInterface\WindowBlogs\IBlogDateElementView.cs" />
     <Compile Include="Assets\Plugins\RowaBlog\Scripts\Client\Api\Data\BlogElementData.cs" />
     <Compile Include="Assets\Plugins\RowaBlog\Scripts\Client\Api\Data\DeleteBlogData.cs" />
+    <Compile Include="Assets\Plugins\RowaCurveDetection\Scripts\AddSample\AddSamplePresenter.cs" />
+    <Compile Include="Assets\Plugins\RowaCurveDetection\Scripts\PaintCurve\Data\PaintCurveData.cs" />
     <Compile Include="Assets\Plugins\RowaBlog\Scripts\Client\Storage\IStorage.cs" />
     <Compile Include="Assets\Plugins\RowaBlog\Scripts\UserInterface\WindowBlogs\ShowBlogData.cs" />
+    <Compile Include="Assets\Plugins\RowaCurveDetection\Scripts\PaintCurve\IPaintCurvePresenter.cs" />
     <Compile Include="Assets\Plugins\RowaBlog\Scripts\Tools\Factory\IFactory.cs" />
     <Compile Include="Assets\Plugins\RowaBlog\Scripts\UserInterface\WindowLogin\IWindowLoginView.cs" />
     <Compile Include="Assets\Plugins\RowaBlog\Scripts\UserInterface\WindowMessage\IWindowMessageView.cs" />
+    <Compile Include="Assets\Plugins\RowaCurveDetection\Scripts\CurveDetection\Methods\ICurveDetectionMethod.cs" />
+    <Compile Include="Assets\Plugins\RowaCurveDetection\Scripts\PaintCurve\Settings\PaintCurveViewSetting.cs" />
     <Compile Include="Assets\Plugins\RowaBlog\Scripts\UserInterface\Panels\EPanel.cs" />
+    <Compile Include="Assets\Plugins\RowaCurveDetection\Scripts\CurveDetection\Settings\CurveDetectionSetting.cs" />
     <Compile Include="Assets\Plugins\RowaBlog\Scripts\UserInterface\WindowBlogs\WindowBlogsView.cs" />
-    <Compile Include="Assets\Plugins\RowaBlog\Scripts\Client\Api\Request.cs" />
     <Compile Include="Assets\Plugins\RowaBlog\Scripts\Client\Api\Data\RoomElementData.cs" />
     <Compile Include="Assets\Plugins\RowaBlog\Scripts\Tools\Hasher\IHasher.cs" />
     <Compile Include="Assets\Plugins\RowaBlog\Scripts\Client\Api\ClientApi.cs" />
+    <Compile Include="Assets\Plugins\RowaClientApi\Request.cs" />
     <Compile Include="Assets\Plugins\RowaBlog\Scripts\UserInterface\WindowRooms\IWindowRoomsController.cs" />
+    <Compile Include="Assets\Plugins\RowaCurveDetection\Scripts\AddSample\IAddSampleView.cs" />
     <Compile Include="Assets\Plugins\RowaBlog\Scripts\UserInterface\WindowBlogs\BlogElementFactory.cs" />
     <Compile Include="Assets\Plugins\RowaBlog\Scripts\UserInterface\WindowMessage\WindowMessageView.cs" />
     <Compile Include="Assets\Plugins\RowaBlog\Scripts\Client\Api\Data\PutBlogLikeData.cs" />
     <Compile Include="Assets\Plugins\RowaBlog\Scripts\UserInterface\WindowRooms\WindowRoomsView.cs" />
+    <Compile Include="Assets\Plugins\RowaCurveDetection\Scripts\PaintCurve\PaintCurveInfoView.cs" />
+    <Compile Include="Assets\Plugins\RowaCurveDetection\Scripts\Root.cs" />
     <Compile Include="Assets\Plugins\RowaBlog\Scripts\Client\Auth\AuthController.cs" />
     <Compile Include="Assets\Plugins\RowaBlog\Scripts\Client\Api\Data\PutBlogEditData.cs" />
+    <Compile Include="Assets\Plugins\RowaCurveDetection\Scripts\PaintCurve\PaintCurveView.cs" />
     <Compile Include="Assets\Plugins\RowaBlog\Scripts\Client\Api\ClientApiLinks.cs" />
     <Compile Include="Assets\Plugins\RowaBlog\Scripts\UserInterface\UserInterfaceRoot.cs" />
+    <Compile Include="Assets\Plugins\RowaCurveDetection\Scripts\AddSample\AddSampleView.cs" />
     <Compile Include="Assets\Plugins\RowaBlog\Scripts\Client\Api\Data\PostBlogCreateData.cs" />
     <Compile Include="Assets\Plugins\RowaBlog\Scripts\Tools\Coroutine\CoroutineService.cs" />
+    <Compile Include="Assets\Plugins\RowaCurveDetection\Scripts\CurveDetection\Methods\CurveDetectionMethodDTW.cs" />
+    <Compile Include="Assets\Plugins\RowaCurveDetection\Scripts\PaintCurve\IPaintCurveInfoView.cs" />
+    <Compile Include="Assets\Plugins\RowaCurveDetection\Scripts\AddSample\IAddSamplePresenter.cs" />
     <Compile Include="Assets\Plugins\RowaBlog\Scripts\UserInterface\Panels\PanelEnumToView.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Assets\Plugins\RowaBlog\Dll\MySql.Data.dll" />
+    <Compile Include="Assets\Plugins\RowaCurveDetection\Scripts\PaintCurve\Data\PaintCurvePresenterData.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -466,10 +490,6 @@
     </Reference>
     <Reference Include="Unity.Collections.LowLevel.ILSupport">
       <HintPath>Library\PackageCache\com.unity.collections@1.2.4\Unity.Collections.LowLevel.ILSupport\Unity.Collections.LowLevel.ILSupport.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="MySql.Data">
-      <HintPath>Assets\Plugins\RowaBlog\Dll\MySql.Data.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">

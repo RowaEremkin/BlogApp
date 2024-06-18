@@ -8,18 +8,25 @@ namespace Rowa.Blog.Tools.Factory
 {
     public class Factory<MN,FD> : IFactory<MN,FD> where MN : MonoBehaviour
     {
+        #region Fields
         protected readonly MN _prefab;
 		protected readonly Transform _container;
         protected List<MN> _list;
         protected Dictionary<MN, FD> _dictinary;
+        #endregion
+        #region Property
         public List<MN> List => _list;
         public Dictionary<MN, FD> Dictinary => _dictinary;
         public event Action OnListChanged;
+        #endregion
+        #region Init
         public Factory(MN prefab, Transform container)
         {
             _prefab = prefab;
             _container = container;
         }
+        #endregion
+        #region Public
         public virtual List<MN> Add(List<FD> data, bool descent = false)
         {
             for (int i = descent ? data.Count - 1 : 0; (descent ? i >= 0 : i < data.Count); i += descent ? -1 : 1)
@@ -81,5 +88,6 @@ namespace Rowa.Blog.Tools.Factory
             }
             return default(FD);
         }
+        #endregion
     }
 }
